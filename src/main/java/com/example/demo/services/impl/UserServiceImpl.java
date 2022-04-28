@@ -53,6 +53,20 @@ public class UserServiceImpl implements UserService {
 		return u;
 	}
 
+	@Override
+	public User getUser(String username) {
+		
+		 return this.userRepository.findByUsername(username);
+	}
+
+	@Override
+	public void deleteUser(long UserId) {
+		this.userRepository.deleteById(UserId);
+		
+	}
+
+	
+
 	
 	
 	

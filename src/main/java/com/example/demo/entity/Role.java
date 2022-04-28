@@ -35,11 +35,11 @@ public class Role {
 
 
 
-	public Role(Long roleId, String roleName, Set<UserRole> userRoles) {
+	public Role(Long roleId, String roleName) {
 		super();
 		this.roleId = roleId;
 		this.roleName = roleName;
-		this.userRoles = userRoles;
+		
 	}
 
 

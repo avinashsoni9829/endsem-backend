@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class UserRole {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)	
 	private Long userRoleId;
     
     // Many to One Mapping b/w Userrole and user 
@@ -20,17 +20,16 @@ public class UserRole {
     // Many to one Mapping b/w Userrole and role
     // this established Many to Many Relation b/w role and user as Userrole is Many to one with
     // both user and role tables so they are Mapped in Many to Many Relation now 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private Role role;
     
     
 
 	
 
-	public UserRole(Long userRoleId, User user, Role role) {
+	public UserRole(User user, Role role) {
 		super();
-		this.userRoleId = userRoleId;
-		this.user = user;
+	    this.user = user;
 		this.role = role;
 	}
 
