@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
 		   
 		   u = this.userRepository.save(user);
 		   
-		    
+		     
 	   }
 		return u;
 	}

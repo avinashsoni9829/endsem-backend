@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -22,6 +23,8 @@ import com.example.demo.services.UserService;
 
 @RestController
 @RequestMapping("/user")
+// in order to allow cross platform request as frontend run on another server and backend on another
+@CrossOrigin("*")
 public class UserController {
  
 	 @Autowired
