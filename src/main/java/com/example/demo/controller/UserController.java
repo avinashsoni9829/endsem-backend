@@ -43,7 +43,7 @@ public class UserController
 		user.setPassword(this.bCryptPasswordEncoder.encode(user.getPassword()));
 		Role role = new Role(4L,"NORMAL");
 		
-		UserRole ur = new UserRole(user,role);
+		UserRole ur = new UserRole(user,role); 
 		
 		roles.add(ur);
 		
@@ -57,7 +57,7 @@ public class UserController
 	}
 	@DeleteMapping("/{userId}")
 	public void deleteUser(@PathVariable("userId") Long userId){
-		this.userService.deleteUser(userId);
+		this.userService.deleteUser(  userId);
 	}
 	
 	

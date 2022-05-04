@@ -23,7 +23,7 @@ public class EndsemBackendApplication implements CommandLineRunner {
 		SpringApplication.run(EndsemBackendApplication.class, args);
 	}
 
-	@Override
+	@Override 
 	public void run(String... args) throws Exception {
 		System.out.println("Starting code");
 		
