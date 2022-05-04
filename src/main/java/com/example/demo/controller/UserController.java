@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -22,20 +24,26 @@ import com.example.demo.services.UserService;
 
 @RestController
 @RequestMapping("/user")
-public class UserController {
+// in order to allow cross platform request as frontend run on another server and backend on another
+@CrossOrigin("*")
+public class UserController
+{
  
 	 @Autowired
 	 private UserService userService;
 	 
-	
+	 @Autowired
+	 private BCryptPasswordEncoder bCryptPasswordEncoder;
+	 
 	@PostMapping("/")
 	public User createUser(@RequestBody User user) throws Exception {
 		
 		Set<UserRole> roles = new HashSet<>();
 		// for every new user we will give the role as Normal only 
+		user.setPassword(this.bCryptPasswordEncoder.encode(user.getPassword()));
 		Role role = new Role(4L,"NORMAL");
 		
-		UserRole ur = new UserRole(user,role);
+		UserRole ur = new UserRole(user,role); 
 		
 		roles.add(ur);
 		
@@ -44,12 +52,12 @@ public class UserController {
 	}
 	
 	@GetMapping("/{username}")
-	public User getUser(@PathVariable("username") String username) {
+	public User getUser(@PathVariable("username") String username){
 		return this.userService.getUser(username);
 	}
 	@DeleteMapping("/{userId}")
-	public void deleteUser(@PathVariable("userId") Long userId) {
-		this.userService.deleteUser(userId);
+	public void deleteUser(@PathVariable("userId") Long userId){
+		this.userService.deleteUser(  userId);
 	}
 	
 	

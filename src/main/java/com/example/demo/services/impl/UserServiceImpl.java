@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.User;
 import com.example.demo.entity.UserRole;
+import com.example.demo.helper.UserFoundException;
 import com.example.demo.repository.RoleRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.services.UserService;
@@ -31,7 +32,7 @@ public class UserServiceImpl implements UserService {
 	
 	 if(u!=null) {
 		    System.out.println("Already Exist!");
-		    throw new Exception("User Already Present!");
+		    throw new UserFoundException();
 	   }
 	   else
 	   {
@@ -48,7 +49,7 @@ public class UserServiceImpl implements UserService {
 		   
 		   u = this.userRepository.save(user);
 		   
-		    
+		     
 	   }
 		return u;
 	}

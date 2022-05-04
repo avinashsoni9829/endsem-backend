@@ -23,35 +23,10 @@ public class EndsemBackendApplication implements CommandLineRunner {
 		SpringApplication.run(EndsemBackendApplication.class, args);
 	}
 
-	@Override
+	@Override 
 	public void run(String... args) throws Exception {
 		System.out.println("Starting code");
 		
-//		User user = new User();
-//		
-//		user.setFirstName("admin");
-//		user.setLastName("op");
-//		user.setUsername("admin");
-//		user.setPassword("admin");
-//		user.setEmail("admin@admin.com");
-//		user.setProfile(null);
-//		
-//		Role role1 = new Role();
-//		
-//		role1.setRoleId(1L);
-//		role1.setRoleName("ADMIN");
-//		
-//		Set<UserRole>userRoleSet = new HashSet<>();
-//		
-//		UserRole ur  = new UserRole();
-//		
-//		ur.setRole(role1);
-//		ur.setUser(user);
-//		
-//		userRoleSet.add(ur);
-//		
-//		User u1 = this.userService.createUser(user, userRoleSet);
-//		System.out.println(u1.getUsername());
 		
 		
 		
