@@ -142,7 +142,7 @@ public class User implements UserDetails {
 		this.userRoles.forEach(ur -> {
 			st.add( new Authority(ur.getRole().getRoleName()));
 		});  
-		return null;
+		return st;
 	}
 
 	@Override

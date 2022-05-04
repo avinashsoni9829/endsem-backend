@@ -34,14 +34,13 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 	private UserDetailsServiceImpl  userDetailsServiceImpl;
     // in this we will tell that how we will do the configuration i,e in the memory or in database
 	@Bean
-	public  PasswordEncoder passwordEncoder() {
-		return NoOpPasswordEncoder.getInstance();
+	public  BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
 	}
 	
 	@Override
 	@Bean
 	public AuthenticationManager authenticationManagerBean() throws Exception {
-		// TODO Auto-generated method stub
 		return super.authenticationManagerBean();
 	}
 	
@@ -56,8 +55,8 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		   http
-		   .csrf()
+		    http
+		   .csrf() // 
 		   .disable()
 		   .cors()
 		   .disable()
@@ -71,7 +70,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 		   .authenticationEntryPoint(unAuthorizedHandler)
 		   .and()
 		   .sessionManagement()
-		   .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		   .sessionCreationPolicy(SessionCreationPolicy.STATELESS); // without session , by default session based
 		    // this will help to validate the token 
 		    http.addFilterBefore(jwtAuthenticationFilter,UsernamePasswordAuthenticationFilter.class);
 		    

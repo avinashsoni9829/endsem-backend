@@ -43,17 +43,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	   	if(reqTokenHeader!=null &&  reqTokenHeader.startsWith("Bearer "))
 	   	{ 
 	   		jwtToken = reqTokenHeader.substring(7);
-	   		try {
+	   		try 
+	   		{
 	   			username = this.jwtUtil.extractUsername(jwtToken);
-			} catch (ExpiredJwtException e) {
+			} catch (ExpiredJwtException e) 
+	   		{
 				// TODO: handle exception
 				e.printStackTrace();
 				System.out.println("token has expired");
-				
 			}
-	   		
-	   		
-	     		  
 	   	}
 	   	else
 	   	{
@@ -61,17 +59,20 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	   	}
 	   	
 	   	
-	   	// Token Valdiation  : 
-	   	
+	 
+	   	// validation for the token
+	   	// authenticated user will go into the context 
 	   	if(username!=null && SecurityContextHolder.getContext().getAuthentication() == null) {
+	   		
 	   		final UserDetails ud = this.userDetalsService.loadUserByUsername(username);
-	   		if(this.jwtUtil.validateToken(jwtToken, ud)) {
-	   			UsernamePasswordAuthenticationToken up= new UsernamePasswordAuthenticationToken(ud,null,ud.getAuthorities());
+	   		
+	   		if(this.jwtUtil.validateToken(jwtToken, ud))
+            {
+	   			UsernamePasswordAuthenticationToken up = new UsernamePasswordAuthenticationToken(ud,null,ud.getAuthorities());
+	   			
 	   			up.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 	   			
 	   			SecurityContextHolder.getContext().setAuthentication(up);
-	   			
-	   			
 	   		}
 	   	}
 	   	else
@@ -79,7 +80,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	   		 System.out.println("Invalid Token");
 	   	}
 	   	
-	      filterChain.doFilter(request, response);
+	   	
+	    filterChain.doFilter(request, response);
 	      
 	
 	}
