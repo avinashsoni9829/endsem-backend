@@ -26,7 +26,8 @@ import com.example.demo.services.UserService;
 @RequestMapping("/user")
 // in order to allow cross platform request as frontend run on another server and backend on another
 @CrossOrigin("*")
-public class UserController {
+public class UserController
+{
  
 	 @Autowired
 	 private UserService userService;
@@ -51,11 +52,11 @@ public class UserController {
 	}
 	
 	@GetMapping("/{username}")
-	public User getUser(@PathVariable("username") String username) {
+	public User getUser(@PathVariable("username") String username){
 		return this.userService.getUser(username);
 	}
 	@DeleteMapping("/{userId}")
-	public void deleteUser(@PathVariable("userId") Long userId) {
+	public void deleteUser(@PathVariable("userId") Long userId){
 		this.userService.deleteUser(userId);
 	}
 	

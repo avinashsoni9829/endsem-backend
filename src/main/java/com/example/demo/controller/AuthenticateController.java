@@ -20,6 +20,7 @@ import com.example.demo.config.JwtUtil;
 import com.example.demo.entity.JwtRequest;
 import com.example.demo.entity.JwtResponce;
 import com.example.demo.entity.User;
+import com.example.demo.helper.UserNotFoundException;
 import com.example.demo.services.impl.UserDetailsServiceImpl;
 
 @RestController
@@ -41,10 +42,10 @@ public class AuthenticateController {
 		{
 			 authenticate(jwtRequest.getUsername(), jwtRequest.getPassword());
 		} 
-	    catch (UsernameNotFoundException e)
+	    catch (UserNotFoundException e)
 		{
 		    e.printStackTrace();
-		    throw new Exception("User Not Found");
+		    throw new UserNotFoundException("User Not Found");
 		}
 		
 		UserDetails user = userDetailsService.loadUserByUsername(jwtRequest.getUsername());
