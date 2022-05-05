@@ -28,7 +28,7 @@ public class QuizServiceImpl implements QuizService {
 
 	@Override
 	public Quiz getQuizById(Long id) {
-		return this.quizRepository.getById(id);
+		return this.quizRepository.findById(id).get();
 	}
 
 	@Override
@@ -38,8 +38,8 @@ public class QuizServiceImpl implements QuizService {
 
 	@Override
 	public void deleteQuiz(Long id) {
-		this.quizRepository.deleteById(id);
 		
+		this.quizRepository.deleteById(id);
 		
 	}
 

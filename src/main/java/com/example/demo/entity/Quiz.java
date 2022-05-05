@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -39,41 +40,14 @@ public class Quiz {
     @OneToMany(mappedBy = "quiz",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Question> questions = new HashSet<>();
-	
-    
-	
 
-	public Quiz() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-     
-	
-       
-	public Quiz(String title, String description, String maxMarks, String numberofQuestions, boolean active,
-			Category category) {
-		super();
-		this.title = title;
-		this.description = description;
-		this.maxMarks = maxMarks;
-		this.numberofQuestions = numberofQuestions;
-		this.active = active;
-		this.category = category;
+	public Long getqId() {
+		return qId;
 	}
 
-
-
-	public Category getCategory() {
-		return category;
+	public void setqId(Long qId) {
+		this.qId = qId;
 	}
-
-
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
-
 
 	public String getTitle() {
 		return title;
@@ -114,6 +88,44 @@ public class Quiz {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Set<Question> getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(Set<Question> questions) {
+		this.questions = questions;
+	}
+
+	public Quiz(Long qId, String title, String description, String maxMarks, String numberofQuestions, boolean active,
+			Category category, Set<Question> questions) {
+		super();
+		this.qId = qId;
+		this.title = title;
+		this.description = description;
+		this.maxMarks = maxMarks;
+		this.numberofQuestions = numberofQuestions;
+		this.active = active;
+		this.category = category;
+		this.questions = questions;
+	}
+
+	public Quiz() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+    
+	
+
 	
 
 }

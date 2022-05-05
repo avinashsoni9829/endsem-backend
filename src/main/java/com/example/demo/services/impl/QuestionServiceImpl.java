@@ -30,7 +30,7 @@ public class QuestionServiceImpl implements QuestionService {
 
 	@Override
 	public Question getQuestionById(Long id) {
-		return this.questionRepository.getById(id);
+		return this.questionRepository.findById(id).get();
 	}
 
 	@Override
