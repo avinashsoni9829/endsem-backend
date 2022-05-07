@@ -25,19 +25,22 @@ public class Category {
     private String description;
     
     
-    @OneToMany(mappedBy = "category",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Quiz>quizes =  new LinkedHashSet<>();
     
     
+
+	
+	
+	public Long getCid() { 
+		return cid;
+	}
+	public void setCid(Long cid) {
+		this.cid = cid;
+	}
 	public String getTitle() {
 		return title;
-	}
-	public Set<Quiz> getQuizes() {
-		return quizes;
-	}
-	public void setQuizes(Set<Quiz> quizes) {
-		this.quizes = quizes;
 	}
 	public void setTitle(String title) {
 		this.title = title;
@@ -48,9 +51,15 @@ public class Category {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	public Category(String title, String description, Set<Quiz> quizes) {
+	public Set<Quiz> getQuizes() {
+		return quizes;
+	}
+	public void setQuizes(Set<Quiz> quizes) {
+		this.quizes = quizes;
+	}
+	public Category(Long cid, String title, String description, Set<Quiz> quizes) {
 		super();
+		this.cid = cid;
 		this.title = title;
 		this.description = description;
 		this.quizes = quizes;

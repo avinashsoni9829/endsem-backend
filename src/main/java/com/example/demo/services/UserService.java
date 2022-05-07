@@ -22,5 +22,8 @@ public interface UserService {
 	
 	// user update
 	
+	public User updateUser(User user);
+	
+	
 	
 }

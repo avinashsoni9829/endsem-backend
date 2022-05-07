@@ -31,29 +31,17 @@ public class Question {
      
 	 @ManyToOne(fetch = FetchType.EAGER)
 	 private Quiz quiz;
-     
-	 
-	 
 
 
-	public Question() {
-		super();
-		// TODO Auto-generated constructor stub
+
+	public Long getQuesid() {
+		return quesid;
 	}
 
 
 
-	public Question(String question, String image, String option1, String option2, String option3, String option4,
-			String answer, Quiz quiz) {
-		super();
-		this.question = question;
-		this.image = image;
-		this.option1 = option1;
-		this.option2 = option2;
-		this.option3 = option3;
-		this.option4 = option4;
-		this.answer = answer;
-		this.quiz = quiz;
+	public void setQuesid(Long quesid) {
+		this.quesid = quesid;
 	}
 
 
@@ -151,6 +139,31 @@ public class Question {
 	public void setQuiz(Quiz quiz) {
 		this.quiz = quiz;
 	}
+
+
+
+	public Question(Long quesid, String question, String image, String option1, String option2, String option3,
+			String option4, String answer, Quiz quiz) {
+		super();
+		this.quesid = quesid;
+		this.question = question;
+		this.image = image;
+		this.option1 = option1;
+		this.option2 = option2;
+		this.option3 = option3;
+		this.option4 = option4;
+		this.answer = answer;
+		this.quiz = quiz;
+	}
+
+
+
+	public Question() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+     
+	
 	 
 	 
 	 
