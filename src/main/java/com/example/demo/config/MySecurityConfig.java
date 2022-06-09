@@ -34,7 +34,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 	private UserDetailsServiceImpl  userDetailsServiceImpl;
     // in this we will tell that how we will do the configuration i,e in the memory or in database
 	@Bean
-	public  BCryptPasswordEncoder passwordEncoder() {
+	public  BCryptPasswordEncoder passwordEncoder() { 
 		return new BCryptPasswordEncoder();
 	}
 	
@@ -59,7 +59,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 		   .csrf() // 
 		   .disable()
 		   .cors()
-		   .disable()
+ 		   .disable()
 		   .authorizeRequests()
 		   .antMatchers("/generate-token","/user/").permitAll()
 		   .antMatchers(HttpMethod.OPTIONS).permitAll()
