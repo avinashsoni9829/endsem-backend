@@ -28,7 +28,12 @@ public class Quiz {
 	
 	private String description;
 	
+	private String image;
+	
+	
 	private String maxMarks;
+	
+	private Long duration = 0L;
 	
 	private String numberofQuestions;
 	
@@ -65,12 +70,28 @@ public class Quiz {
 		this.description = description;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public String getMaxMarks() {
 		return maxMarks;
 	}
 
 	public void setMaxMarks(String maxMarks) {
 		this.maxMarks = maxMarks;
+	}
+
+	public Long getDuration() {
+		return duration;
+	}
+
+	public void setDuration(Long duration) {
+		this.duration = duration;
 	}
 
 	public String getNumberofQuestions() {
@@ -105,25 +126,9 @@ public class Quiz {
 		this.questions = questions;
 	}
 
-	public Quiz(Long qId, String title, String description, String maxMarks, String numberofQuestions, boolean active,
-			Category category, Set<Question> questions) {
-		super();
-		this.qId = qId;
-		this.title = title;
-		this.description = description;
-		this.maxMarks = maxMarks;
-		this.numberofQuestions = numberofQuestions;
-		this.active = active;
-		this.category = category;
-		this.questions = questions;
-	}
-
-	public Quiz() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	
-    
+
+
 	
 
 	
